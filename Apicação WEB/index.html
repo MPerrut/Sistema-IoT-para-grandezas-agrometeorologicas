@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <title>Iot App</title>
+
+     <!-- conexeção com o firebase -->
+     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+     <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-auth.js"></script>
+     <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-database.js"></script>
+     
+        <script>
+        //Credenciais do banco de dados
+        const firebaseConfig = {
+          apiKey: "Chave da API",
+          authDomain: "URL do dominio",
+          databaseURL: "URL do banco de dados",
+          projectId: "ID do projeto",
+          storageBucket: "Nome do bucket",
+          messagingSenderId: "ID do remetente",
+          appId: "ID do app"
+};
+        //Inicialização do app Firebase
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth()
+        const db = firebase.database();
+    </script>
+
+  </head>
+    <body>
+    <!--Barra-->
+    <div class="topnav">
+      <h1>Sistema IOT</h1>
+    </div>
+
+       <!--Formulário de login-->
+    <form id="login-form" style="display: none;">
+
+      <div class="form-elements-container">
+        <label for="input-email"><b>Email</b></label>
+        <input type="text" placeholder="Enter Email" id="input-email" required>
+
+        <label for="input-password"><b>Password</b></label>
+        <input type="password" placeholder="Enter Senha" id="input-password" required>
+
+        <button class="botpad" type="submit" id="login-button">Login</button>
+        <p id="error-message" style="color:rgb(255, 50, 50);"></p>
+
+      </div>
+    </form>
+
+    <!--Conteúdo-->
+  <div class="content-sign-in" id="content-sign-in" style="display: none;">
+    <div class="conteudo">
+      <div class="box1">
+        <div class="tempconteiner">
+          <div class="card1">
+            <div class="tempo">
+                <h2 class="cidade"></h2>
+                <h1 class="temp"></h1>
+                <div class="flex">
+                    <img src="" alt="" class="icon" >
+                    <div class="descricao"></div>
+                </div>
+                <div class="umidadeSat"></div>
+                <div class="vento"></div>
+                <div class="nascer"></div>
+                <div class="por"></div>
+            </div>
+          </div>
+
+          <div class="sensor"> 
+            <h2>SHT75</h2>
+            <p>Temperatura: <span id="SHT_tempC"></span></p>
+            <p>Temperatura: <span id="SHT_tempF"></span></p>
+            <p>Umidade: <span id="SHT_umidade"></span></p>
+            <button class="botpad" id="SHT_button">Atualizar</button>
+            <h6>Ultima Atualização: <span id="SHT_data"></span></h6>
+          </div>
+
+          <div class="light">
+            <h2>BH1750</h2>
+            <p>Lux: <span id="Lux"></span></p>
+            <button class="botpad" id="BH1750_button">Atualizar</button>
+            <h6>Ultima Atualização: <span id="Light_data"></span></h6>
+          </div>
+
+        </div>
+        
+    </div>
+    <div class="box2">
+      <div class="graphconteiner">
+        <h2>Dashboard </h2>
+        <div class="opcoes_graf">
+            <label for="medida">Temperatura:</label>
+            <select id="medida" name="medida">
+                <option value="mean">média</option>
+                <option value="min">mínima</option>
+                <option value="max">máxima</option>
+                <option value="all">todas</option>
+            </select><br><br>
+            <label for="resolucao">Resolução:</label>
+            <select id="resolucao" name="resolucao">
+                <option value="1H">1 hora</option>
+                <option value="1D">1 dia</option>
+                <option value="1W">1 semana</option>
+                <option value="1M">1 mês</option>
+            </select><br><br>
+            <label for="datemin">Data de início:</label>
+            <input type="datetime-local" id="datemin" name="datemin" min="2023-01-01T00:00"><br><br>
+          
+            <label for="datemax">Data de Fim:</label>
+            <input type="datetime-local" id="datemax" name="datemax"><br><br>
+            
+            <button class="botpad" id="submit">Submit</button>
+          
+
+        </div>
+
+        <div class="graph">
+          <div class="graf">
+            <h3>Temperatura</h3>
+            <img class="grafico" id="temperaturaGraf" src="https://agriot-9b824.rj.r.appspot.com/plots/temp?datemin=2023-01-01T00:00&datemax=2023-01-30T23:59&medida=all&resolucao=1D"/>
+          </div>
+          <div class="graf">
+            <h3>Umidade</h3>
+            <img  class="grafico" id="umidadeGraf"src="https://agriot-9b824.rj.r.appspot.com/plots/umid?datemin=2023-01-01T00:00&datemax=2023-01-30T23:59"/>
+          </div>
+        </div>          
+      </div>
+
+      <div class="map_baixar">
+        <div class="mapconteiner">
+          <h3>Localização</h3>
+          <div class="map" id="map"></div>
+        </div>
+        <div class="baixar">
+          <h3>Download dos Dados</h3>
+          <label for="periodo">Referente:</label>
+            <select id="periodo" name="periodo">
+                <option value="m">1 mês</option>
+                <option value="w">1 semana</option>
+                <option value="d">1 dia</option>
+            </select><br><br>
+          <label for="tipo">Arquivo:</label>
+            <select id="tipo" name="tipo">
+                <option value="csv">CSV</option>
+                <option value="json">JSON</option>
+            </select><br><br>
+            <button class="botpad" id="download">Download</button>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+   
+   <!--Barra de autentificação-->
+   <div id="authentication-bar" style="display: none;">
+    <p><span id="authentication-status"></span>
+       <span id="user-details">USEREMAIL</span>
+       <button  class="botpad" href="/" id="logout-link">Sair</button>
+    </p>
+  </div>
+
+    <!--inclusão dos arquivos javascript-->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCsVMjUUVFcya97oLqI45bEJSPtgA-v8mg"></script>
+    <script src="scripts/auth.js"></script>
+    <script src="scripts/index.js"></script>
+    
+
+
+  </body>
+</html>

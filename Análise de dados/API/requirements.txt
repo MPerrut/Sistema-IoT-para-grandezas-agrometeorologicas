@@ -1,0 +1,7 @@
+flask
+flask-restful
+numpy
+pandas
+datetime
+matplotlib
+firebase_admin

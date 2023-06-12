@@ -1,0 +1,250 @@
+html {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  display: inline-block;
+  text-align: center;
+}
+
+/*Formulário de login*/
+.form-elements-container
+{
+  background-color: #225024d0;
+  color: #FDFDFD;
+  padding: 2em;
+  border-radius: 20px;
+}
+
+#input-email{
+  border-radius: 4px;
+  background-color: rgb(247, 225, 194);
+  color: #225024;
+}
+
+#input-password{
+  border-radius: 4px;
+  background-color: rgb(247, 225, 194);
+  color: #225024;
+}
+
+#authentication-bar{
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-bottom: 5px;
+}
+
+.form-elements-container{
+  padding: 16px;
+  width: 250px;
+  margin: 0 auto;
+}
+
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+/*Conteúdo da página*/
+body {
+  margin: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background-image: url(https://images.unsplash.com/photo-1563514227147-6d2ff665a6a0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80);
+  background-size: cover;
+}
+
+.topnav {
+  height: 50px;
+  overflow: hidden;
+
+  color: white;
+  font-size: 0.7rem;
+  padding: 5px;
+}
+
+.conteudo {
+  width: 1350px;
+  height: 100%;
+  display: flex;
+}
+
+.box1 {
+  width: max-content;
+  height: max-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.box2 {
+  width: max-content;
+  height: 1100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.tempconteiner {
+  height: 990px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.card1, .sensor, .light{
+  font-size:medium;
+  color: #FDFDFD;
+  background-color: #22502480;
+  padding: 1em;
+  border-radius: 30px;
+  width: 75%;
+  margin: 1em;
+}
+
+.graphconteiner {
+  background-color: #22502480;
+  border-radius: 30px;
+  color: #FDFDFD;
+  width: 100%;
+  height: 600px;
+  margin-top: 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.opcoes_graf {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+}
+
+.graph {
+  width: 1000px;
+  height: 900px;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.graf {
+  background-color: #225024d0;
+  padding: 1em;
+  border-radius: 30px;
+  width: 450px;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content:flex-start;
+}
+
+.grafico {
+  width: 450px ;
+  height:400px;
+  object-fit: contain;
+}
+
+.map_baixar{
+  width: 100%;
+  height: 450px;
+  margin-top: 0px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.mapconteiner{
+  background-color: #225024d0;
+  border-radius: 30px;
+  color: #FDFDFD;
+  width: 70%;
+  height: 400px;
+  margin-top: 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content:flex-start;
+}
+.map{
+  background-color: #225024d0;
+  padding: 1em;
+  border-radius: 30px;
+  width: 550px;
+  height: 400px;
+}
+
+#map {
+  height: 100%;
+}
+.baixar{
+  background-color: #225024d0;
+  border-radius: 30px;
+  color: #FDFDFD;
+  width: 20%;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.botpad {
+  background-color: #225024;;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+}
+.botpad:hover {
+ opacity: 0.5;
+}
+.deletebtn{
+  background-color: #c52c2c;
+}
+
+@media screen and (max-width: 300px) {
+  .cancelbtn, .deletebtn {
+      width: 100%;
+  }
+}
+
+#tipo, #periodo{
+  background-color: #d3f1d4;
+  color: rgb(0, 66, 0);
+  width: 40%;
+}
+
+#resolucao, #medida{
+  background-color: #d3f1d4;
+  color: rgb(0, 66, 0);
+}
+
+#datemin, #datemax{
+  background-color: #d3f1d4;
+  color: rgb(0, 66, 0);;
+}
+
+#user-details
+{
+  color: #FDFDFD;
+}
+
+
+
+
+
+
+
+
+
+
+
